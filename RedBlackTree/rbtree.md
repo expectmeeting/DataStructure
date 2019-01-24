@@ -1,4 +1,4 @@
-[TOC]
+[toc]
 
 # 红黑树定义
 
@@ -20,7 +20,7 @@
 
 * 右旋 ： 以当前节点为支点，将其左孩子变为其的父节点，即当前节点变成了一个右节点。
 
-！[右旋](https://github.com/expectmeeting/DataStructure/blob/master/RedBlackTree/right_rotate.gif)
+![右旋](https://github.com/expectmeeting/DataStructure/blob/master/RedBlackTree/right_rotate.gif)
 
 由于红黑树同时是一颗二叉搜索树，因此左旋和右旋不会改变其二叉搜索树的性质。
 
