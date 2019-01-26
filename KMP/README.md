@@ -43,7 +43,7 @@ void getnext(const char *p,int * const next){
 	next[1] = 0;
 	
 	int j = 2;
-	int i = 0;
+	int i = 0;//next[j-1]
 	while (j < n){
 		if (p[j-1] == p[i]){
 			next[j++] = ++i;
