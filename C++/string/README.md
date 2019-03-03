@@ -77,7 +77,7 @@ int strcmp(const char* pc1, const char* pc2)
 
 注意：只能比较字符串，不能比较数字等其他形式的参数
 
-3、strcat
+### 3、strcat
 
 ```c++
 char* strcat(char* pc1, const char* pc2)
@@ -94,7 +94,7 @@ char* strcat(char* pc1, const char* pc2)
 }
 ```
 
-4、strcpy
+### 4、strcpy
 
 ```c++
 char* strcpy(char* pc1, const char* pc2)
