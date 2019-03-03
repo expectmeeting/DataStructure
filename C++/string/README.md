@@ -24,7 +24,7 @@
 
  
 
-**表1** 字符串处理函数
+                             **表1** 字符串处理函数
 
 | strlen(s)        | 返回字符串长度，不包括结束字符NULL                           |
 | ---------------- | ------------------------------------------------------------ |
@@ -109,18 +109,18 @@ char* strcpy(char* pc1, const char* pc2)
 }
 ```
 
-疑问：while循环中为(*pc1++=*pc2++)!='\0'而不是*pc1++=*pc2++ ？
+疑问：while循环中为(*pc1++=*pc2++)!='\0' 而不是 *pc1++=*pc2++ ？
 
 ## 3、 memset 和 memcpy
 
-**void* memcpy(void* pDest, const void* pSrc, size_t n);**
+** void* memcpy(void* pDest, const void* pSrc, size_t n); **
 
 功能：从源src所指向的内存地址的起始位置开始拷贝n个字节到目标dest所指向的内存地址的起始位置中。函数返回指向dest的指针。
 
-**void* memset(void* s,int ch , size_t n);**
+** void* memset(void* s,int ch , size_t n); **
 
 功能：将s中前n个字节用ch替换并返回s，作用是在一段内存块中填充某个给定的值，它是对较大的结构体或数组进行清零操作的一种最快方法。
 
-**void *memmove(void *dest, const void *src, size_t n);**
+** void *memmove(void *dest, const void *src, size_t n); **
 
 功能：将src指针指向的内存区的前n个字节数据拷贝到dest指向的内存区内。src和dest指向内存区可以重叠，memmove可以保证拷贝的正确性。
