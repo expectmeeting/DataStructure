@@ -85,11 +85,11 @@ sA.bit3=0b210；
 
 **大端存储格式**
 
-![fig1](E:\Git_repository\Notes\C++\StructNnionEnum\fig1.png)
+![fig1](./fig1.png)
 
 **小端存储格式**
 
-![fig2](E:\Git_repository\Notes\C++\StructNnionEnum\fig2.png)
+![fig2](./fig2.png)
 
 # sizeof运算符
 
