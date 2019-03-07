@@ -22,15 +22,15 @@ KMP算法是一种快速的字符串匹配算法，例如在字符串（主串�
 
 通过对上述概念的理解，能更清楚地明白KMP算法的思路。相比传统的暴力算法，KMP算法中指向目标串字符的i不会回退，指向模式串p中的j在匹配失败时，总是指向p中标号为next[j]的字符。如主串i=4,s[i]='b'与模式串j=4,p[j]='a'不匹配，如图1，则已匹配字符串为“aaba”，其部分匹配值为1，即字符串“aaba”从起始位置数起的前1个字符和从末尾位置数起的前1个字符相同(或理解为目标串中的子串“aaba”从末尾位置数起的前1个字符和匹配串中的子串“aaba”从起始位置数起的前1个字符已经匹配)。那么i指向的位置不需回退，只需将j的值改为next[j]即可(若部分匹配值为-1，则i++)，然后重新开始匹配，如图2。   
 
-![图1](https://github.com/expectmeeting/DataStructure/blob/master/KMP/figure1.jpg "图1")
+![图1](./figure1.jpg "图1")
 
-![图2](https://github.com/expectmeeting/DataStructure/blob/master/KMP/figure2.jpg "图2")    
+![图2](./figure2.jpg "图2")    
 
 ## 求解next数组
 
 按照next数组的定义，默认next[0]=-1,next[1]=0。下面给出图3来展示next数组的求解。  
 
-![图3](https://github.com/expectmeeting/DataStructure/blob/master/KMP/gif1.gif "图3")   
+![图3](./gif1.gif "图3")   
 
 下面给出求解next数组的程序
 
