@@ -8,7 +8,7 @@
 
 **懒汉模式**：需要调用该实例时，才创建。**优点：**节省系统资源。缺点：在多线程下会出现实例不唯一情况，因此需要加锁解决，导致运行效率不高。
 
-![fig1](C:\git_repository\DataStructure\DesignPattern\Singleton\figure1.jpg)
+![fig1](./figure1.jpg)
 
 ## 字段和方法的属性用+、-和#表示
 
@@ -25,7 +25,7 @@
 
 **属性 	名称（参数列表）  [ ： 返回类型]**
 
-![fig2](C:\git_repository\DataStructure\DesignPattern\UML\figure2.jpg)
+![fig2](./figure2.jpg)
 
 ## 单例模式的实现
 
