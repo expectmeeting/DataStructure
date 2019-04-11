@@ -64,7 +64,7 @@ int main()
 	}
 	
 	while(1){	
-		int ret = poll(fd, fds.size(), -1);
+		int ret = poll(fd, MAX_CONN, -1);
 		
 	
 		if(ret < 0){
@@ -119,7 +119,7 @@ int main()
 							fd[i].events = 0;
 							fds.erase(i);
 							if(strcmp("bye bye",buf)==0){
-								bCloseServer = ture;
+								bCloseServer = true;
 							}
 						}
 						else{
@@ -194,7 +194,7 @@ int main()
 		}
 		else{
 			printf("send %d Bytes\n", send_len);
-			if(strcmp("bye",buf)==0){
+			if(strcmp("bye",buf)==0 || strcmp("bye bye",buf)==0){
 				printf("close communication\n");
 				break;
 			}

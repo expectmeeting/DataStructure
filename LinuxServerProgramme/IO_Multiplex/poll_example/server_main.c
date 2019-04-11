@@ -59,7 +59,7 @@ int main()
 	}
 	
 	while(1){	
-		int ret = poll(fd, fds.size(), -1);
+		int ret = poll(fd, MAX_CONN, -1);
 		
 	
 		if(ret < 0){

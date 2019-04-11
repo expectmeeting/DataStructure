@@ -46,7 +46,7 @@ int main()
 		}
 		else{
 			printf("send %d Bytes\n", send_len);
-			if(strcmp("bye",buf)==0){
+			if(strcmp("bye",buf)==0 || strcmp("bye bye",buf)==0){
 				printf("close communication\n");
 				break;
 			}
