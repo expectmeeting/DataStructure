@@ -10,3 +10,5 @@
   - [gcc/g++的编译过程](./gcc_g++_compile_process)
   - [linux下静态库和动态库的生成与使用](./dynamic_static_library)
 
+- [标准输入](./input/README.md)
+
