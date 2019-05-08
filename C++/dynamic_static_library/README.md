@@ -56,7 +56,7 @@ int main(){
   gcc -fPIC hello.c
   gcc -shared -o libhello.so hello.o
   //第二种
-  gcc -shared -fPIC libhello.so hello.c
+  gcc -shared -fPIC -o libhello.so hello.c
   ~~~
 
 - 动态库的使用与静态库一致
@@ -65,4 +65,5 @@ int main(){
   gcc -o hello main.c -L. -lhello
   ~~~
 
-  PS：如果出现动态库或静态库无法找到的错误，可将其移至默认搜索目录下，/usr/lib或/lib
+  PS：如果出现动态库或静态库无法找到的错误，可将其移至默认搜索目录下，/usr/lib或/lib, 并更新 ldconfig
+
