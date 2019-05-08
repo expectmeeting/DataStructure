@@ -16,7 +16,7 @@ int threadpool_queue_push(threadpool_queue_t *queue, threadpool_task_t *task){
 	
 	threadpool_task_t *buf;
 	
-	//扩容会影响任务的先后顺序
+	//扩容
 	if(queue->m_size == queue->m_capacity){
 		queue->m_capacity = queue->m_capacity << 1;
 		
