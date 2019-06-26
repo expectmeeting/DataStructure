@@ -33,13 +33,13 @@ service network restart
 
 **首先**，查看网络适配器，是否处于NAT模式
 
-![fig1](./problem2/fig1.png)]
+![fig1](./problem2/fig1.png)
 
 示例中选择的是VMnet8(NAT模式)。
 
 **其次**，打开 虚拟机->编辑->虚拟网络编辑器，将VMnet8按下图所示配置完成后，点击NAT设置。
 
-![fig3](./problem2/fig2.png)
+![fig2](./problem2/fig2.png)
 
 NAT设置如下图，主要设置网关，前3位与子网前3位保持一致(192.168.122)，最后一位为.2。
 
