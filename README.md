@@ -5,7 +5,6 @@
 ## 目录
 
 - [C知识总结](./C)
-
 - [C++知识总结](./C++)
 - [计算机操作系统](./ComputerOperatorSystem)
 - [数据结构](./DataStructure)
@@ -14,4 +13,11 @@
 - [虚拟机](./VMware)
 - [Shell脚本编程](./Shell)
 
+## 学习资料
 
+- [视频](./VideoLearnResource)
+
+## ToDo
+
+- 了解paxos算法(消除消息传递的一致性算法)
+- 
