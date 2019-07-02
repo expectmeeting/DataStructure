@@ -15,7 +15,7 @@
 
 ## 学习资料
 
-- [视频](./VideoLearnResource)
+- [视频](./VedioLearnResource)
 
 ## ToDo
 
