@@ -44,6 +44,9 @@
 42、 [Javascript](https://www.bilibili.com/video/av48927313/)
 43、[微信小程序 ](https://www.bilibili.com/video/av48324778/)
 44、[React 项目实战](https://www.bilibili.com/video/av48495066/) 
-45、[Vue 项目实战](https://www.bilibili.com/video/av48333477/) 
+45、[Vue 项目实战](https://www.bilibili.com/video/av48333477/)
 
-46、[设计模式](https://www.bilibili.com/video/av24176315?p=2)
+46、[设计模式](https://www.bilibili.com/video/av24176315?p=2)  
+
+47、[编程范式](https://www.bilibili.com/video/av42964196/?p=1)
+
