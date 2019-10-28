@@ -69,3 +69,36 @@ clean:
 
     obj=$(patsubst ./%.c, ./%.o, $(src))
 
+## 高级工具
+
+对于大型项目，数以百计的源文件及依赖关系，手动写makefile是一项极为艰难的任务。因此GUN提供了autoconf和automake工具来帮助我们生成Makefile文件。
+
+
+
+一般采用这种方法生成Makefile文件的项目下，都含有**configure.ac**和**Makefile.am**文件，编译方法：
+
+~~~shell
+#bootsrap完成一些准备工作，非必须
+./bootstrap
+#configure生成Makefile
+./configure
+#编译
+make -j($nproc)
+#安装
+make install
+~~~
+
+- 需要的软件：
+  - autoconf
+  - automake
+  - m4
+  - perl
+  - libtool
+
+- 流程
+
+  ![fig1](./fig1.jpg)
+
+- [autoconf手册](http://tool.oschina.net/apidocs/apidoc?api=autoconf)
+- [automake手册](http://www.gnu.org/software/automake/manual/automake.html)
+
