@@ -12,6 +12,7 @@
 - [Linux服务器开发](./LinuxServerProgramme)
 - [虚拟机](./VMware)
 - [Shell脚本编程](./Shell)
+- [Raid的管理](./Raid)
 
 ## 学习资料
 
