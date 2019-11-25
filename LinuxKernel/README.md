@@ -4,3 +4,5 @@
 
 [2、linux驱动模块](./drivers)
 
+[3、linux内核与实现读书笔记](./KernelDesignAndImplementation)
+
