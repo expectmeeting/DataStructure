@@ -4,7 +4,36 @@
 
 usb器件驱动主要工作在含有linux系统的嵌入式设备上，使得该设备成为一个usb从设备而存在。
 
-## 1、重要结构体
+## 1、层次结构
+
+通常运行在USB设备端的子系统至少在内核中含有三层用于进行USB协议的处理。从下到上，分为：
+
+- USB控制器驱动(USB device controller driver)
+
+  该层位于软件架构最底层，也是唯一一层通过寄存器、fifos、dma、irq等与硬件通信的一层。在<linux/usb/gadget.h>中定义的API抽象了端点硬件。硬件通过端点对象暴露给软件，并通过回调与器件驱动交互，而端点对象负责接收IN/OUT缓冲区流。尽管普通的USB设备只有一个上游端口，因此只有一个驱动程序，但支持任意数量的器件驱动程序，只是同一时间只能使用一个。
+
+  目录：/gadget/udc/
+
+  涉及文件：gadget/udc-core.c和具体UDC控制器的实现文件(填充usb_gadget对象，对usb_gadget_ops和usb_ep_ops对象初始化，调用usb_add_gadget_udc函数将填充的usb_gadget对象用usb_udc对象进行管理，并加入udc_list链表中）
+
+- 器件驱动（Gadget Driver）
+
+  器件驱动程序的下边界通过对控制器驱动程序的调用来实现硬件无关的USB功能。由于硬件在功能和限制上有很大的差异，并且在空间非常大的嵌入式环境中使用，因此gadget驱动程序通常在编译时用特定控制器支持的端点进行配置。使用条件编译，器件驱动程序可以移植到多个不同的控制器。（最近的内核通过为许多面向批量的驱动程序自动配置端点，大大简化了支持新硬件的工作。）Gadget驱动程序的职责包括：
+
+  - 处理setup请求（ep0协议响应），可能包括特定类的功能
+
+  - 返回配置和字符串描述符
+
+  - （re）设置配置和接口配置，包括启用和配置端点
+
+  - 处理生命周期事件，例如管理与硬件的绑定、USB挂起/恢复、远程唤醒和从USB主机断开连接。
+
+  - 管理所有当前已启用端点上的IN/OUT传输
+
+- 功能层
+
+
+## 2、重要结构体
 
 - usb_composite_driver：为器件分配配置
 
@@ -125,7 +154,7 @@ usb器件驱动主要工作在含有linux系统的嵌入式设备上，使得该
   	struct usb_otg_caps		*otg_caps;//器件的otg功能
   
   	unsigned			sg_supported:1;//能处理scatter/gather IO,则为1
-  	unsigned			is_otg:1;
+  	unsigned			is_otg:1;//是否支持otg
   	unsigned			is_a_peripheral:1;
   	unsigned			b_hnp_enable:1;
   	unsigned			a_hnp_support:1;
@@ -137,9 +166,9 @@ usb器件驱动主要工作在含有linux系统的嵌入式设备上，使得该
   	unsigned			quirk_stall_not_supp:1;
   	unsigned			quirk_zlp_not_supp:1;
   	unsigned			quirk_avoids_skb_reserve:1;
-  	unsigned			is_selfpowered:1;
-  	unsigned			deactivated:1;
-  	unsigned			connected:1;
+  	unsigned			is_selfpowered:1;//是否是自供电设备
+  	unsigned			deactivated:1;//是否激活
+  	unsigned			connected:1;//是否与host连接，即是否能使能上拉电阻，触发host枚举
   };
   ~~~
 
@@ -173,7 +202,7 @@ usb器件驱动主要工作在含有linux系统的嵌入式设备上，使得该
   	struct usb_gadget		*gadget;
   	struct device			dev;//实际控制器的子设备
   	struct list_head		list;//udc类驱动使用的链表
-  	bool				vbus;
+  	bool				vbus;//供电电源线的状态，对于不关心其状态的udc，该值总为true
   };
   ~~~
 
@@ -199,8 +228,8 @@ usb器件驱动主要工作在含有linux系统的嵌入式设备上，使得该
   	void			*context;
   	struct list_head	list;//被器件驱动使用的链表
   
-  	int			status;
-  	unsigned		actual;
+  	int			status;//返回完成结果，0->成功
+  	unsigned		actual;//实际传输的数据长度
   };
   ~~~
 
@@ -208,15 +237,15 @@ usb器件驱动主要工作在含有linux系统的嵌入式设备上，使得该
 
   ~~~c
   struct usb_ep {
-  	void			*driver_data;
+  	void			*driver_data;//端点私有数据，一般指向usb_composite_dev对象
   
-  	const char		*name;
+  	const char		*name;//端点名称
   	const struct usb_ep_ops	*ops;
-  	struct list_head	ep_list;
+  	struct list_head	ep_list;//管理gadget设备建立的所有端点的链表
   	struct usb_ep_caps	caps;
   	bool			claimed;
   	bool			enabled;
-  	unsigned		maxpacket:16;
+  	unsigned		maxpacket:16;//该端点使用的最大包长度
   	unsigned		maxpacket_limit:16;
   	unsigned		max_streams:16;
   	unsigned		mult:2;
