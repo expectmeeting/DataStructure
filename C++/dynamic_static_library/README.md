@@ -67,3 +67,19 @@ int main(){
 
   PS：如果出现动态库或静态库无法找到的错误，可将其移至默认搜索目录下，/usr/lib或/lib, 并更新 ldconfig
 
+## 动态库的使用
+
+- 编译时，库路径
+
+  - 使用绝对路径或相对路径：gcc -o out test.c /home/libdy.so
+
+  - 链接器在标准搜索路径寻找动态库，可通过选项-print-search-dirs查看
+  - 使用-l<u>library</u>链接名为<u>library</u>的动态库时，除在标准搜索路径中查找，还会在选项-L<u>dir</u>指定路径<u>dir</u>中查找
+
+- 动态加载时，库路径
+
+  - 编译时使用的绝对路径或相对路径，可通过readelf -d <u>ELF</u>查看，或通过ldd  <u>ELF</u>查看所依赖的库及路径
+  - 编译时使用参数**-Wl,-rpath=<u>dir</u>**指定搜索路径，可通过readelf -d <u>ELF</u>查看
+  - 环境变量 LD_LIBRARY_PATH 指定的动态库搜索路径
+  - 配置文件 /etc/ld.so.conf 中指定的动态库搜索路径
+  - 标准搜索路径
