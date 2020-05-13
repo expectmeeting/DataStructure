@@ -67,6 +67,7 @@ linux中用户信息保存在/etc/passwd中，用户群组信息/etc/group中
   - localinstall：安装本地的rpm软件包
   - localupdate：显示本地rpm软件包进行更新
   - deplist：显示rpm软件包的所有依赖关系
+  - --downloadonly：只下载rpm包不安装，可由--downloaddir指定路径
 - debian系：apt-get [options] \[parameter]
   - install：安装
   - remove：卸载
